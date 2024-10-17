@@ -47,7 +47,7 @@ class PhysicsEntity:
 	Moves an entity by a movement vector adding on to the object's current velocity
 	Current velocity is not changed from it
 	"""
-	def update(self, tilemap, collidables, movement=(0,0)):
+	def update(self, collidables, movement=(0,0)):
 		# self.collisions = {'up': False, 'down': False, 'right': False, 'left': False}
 
 		frame_movement = (movement[0] + self.velocity[0], movement[1] + self.velocity[1])
@@ -75,24 +75,6 @@ class PhysicsEntity:
 						self.hitbox.left = obj.hitbox.right
 					self.pos[0] = self.hitbox.x
 					# print(f"x {self.pos[0]}")
-					
-		# would work if the avatar is one tile in size, but that's not the case here
-		# for rect in tilemap.solid_tiles_touched(self.pos):
-		# 	if self.hitbox.colliderect(rect):
-		# 		if frame_movement[0] > 0:
-		# 			self.hitbox.right = rect.left
-		# 			self.collisions['right'] = True
-		# 		if frame_movement[0] < 0:
-		# 			self.hitbox.left = rect.right
-		# 			self.collisions['left'] = True
-		# 		self.pos[0] = self.hitbox.x
-		# 		if frame_movement[1] > 0:
-		# 			self.hitbox.bottom = rect.top
-		# 			self.collisions['down'] = True
-		# 		if frame_movement[1] < 0:
-		# 			self.hitbox.top = rect.bottom
-		# 			self.collisions['up'] = True
-		# 		self.pos[1] = self.hitbox.y
 
 	def render(self, surface):
 		surface.blit(self.game.assets[self.type], self.pos)
