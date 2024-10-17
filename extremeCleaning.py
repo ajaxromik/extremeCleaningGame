@@ -27,7 +27,7 @@ class Game:
 		cardboardBox.fill((100,65,23))
 
 		self.assets = {
-			'player': load_image('frog.png'),
+			'player': load_image('thwomp.png'),
 			'cardboardBox' : cardboardBox,
 		}
 
@@ -61,17 +61,15 @@ class Game:
 
 			self.display.fill((14,219,50))
 
-			a = TouchableBox(self, (6*16, 8*16), (32,32), 'cardboardBox', False)
-			a.render(self.display)
-			a.checkCollide(self.player.hitbox, lambda bool: print("touching!") if bool else 0)
+			# a = TouchableBox(self, (6*16, 8*16), (32,32), 'cardboardBox', False)
+			# a.render(self.display)
+			# a.checkCollide(self.player.hitbox, lambda bool: print("touching!") if bool else 0)
 
+			# box handling logic here
 			for box in list(map(lambda key: self.collidables[key], self.breakables)):
 				box.render(self.display)
 
 			self.player.update(self.collidables)
-
-			# self.collidables['collision_area'].checkCollide(self.player.hitbox, lambda bool: (
-			# 	pygame.draw.rect(self.display, ((0,0,255) if bool else (255,255,0)), self.collidables['collision_area'].hitbox)))
 
 			self.player.render(self.display)
 

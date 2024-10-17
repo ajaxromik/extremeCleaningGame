@@ -1,3 +1,6 @@
 .git
 .gitignore
 scripts/__pycache__
+*.docx
+*.doc
+*.tmp
